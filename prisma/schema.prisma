@@ -11,20 +11,95 @@ generator client {
 }
 
 model Post {
-  id        Int     @default(autoincrement()) @id
+  id        Int           @id @default(autoincrement())
   title     String
   content   String?
-  published Boolean @default(false)
-  author    User?   @relation(fields: [authorId], references: [id])
+  published Boolean       @default(false)
+  author    Admin?        @relation(fields: [authorId], references: [id])
   authorId  Int?
+  tagId     Int?
+  tag       Tag?          @relation(fields: [tagId], references: [id])
+  comments  PostComment[]
+  createdAt DateTime      @default(now()) @map(name: "created_at")
+  updatedAt DateTime      @updatedAt @map(name: "updated_at")
+  Section   Section?      @relation(fields: [sectionId], references: [id])
+  sectionId Int?
 }
 
-model User {
-  id            Int       @default(autoincrement()) @id
-  name          String?
-  email         String?   @unique
-  createdAt     DateTime  @default(now()) @map(name: "created_at")
-  updatedAt     DateTime  @updatedAt @map(name: "updated_at")
-  posts         Post[]
-  @@map(name: "users")
+model Member {
+  id                     Int           @id @default(autoincrement())
+  name                   String?
+  email                  String?       @unique
+  tier                   Tier?         @relation(fields: [tierId], references: [id])
+  tierId                 Int?
+  joinDate               DateTime      @default(now()) @map(name: "created_at")
+  subsciptionRenewalDate DateTime?
+  SubscriptionType       String?
+  deleted                Boolean?
+  comments               PostComment[]
+  updatedAt              DateTime      @updatedAt @map(name: "updated_at")
+}
+
+model Admin {
+  id        Int      @id @default(autoincrement())
+  name      String?
+  email     String?  @unique
+  password  String
+  deleted   Boolean
+  posts     Post[]
+  createdAt DateTime @default(now()) @map(name: "created_at")
+  updatedAt DateTime @updatedAt @map(name: "updated_at")
+  Media     Media[]
+}
+
+model Section {
+  id          Int      @id @default(autoincrement())
+  name        String?
+  description String?
+  posts       Post[]
+  createdAt   DateTime @default(now()) @map(name: "created_at")
+  updatedAt   DateTime @updatedAt @map(name: "updated_at")
+}
+
+model Tag {
+  id        Int      @id @default(autoincrement())
+  name      String?
+  createdAt DateTime @default(now()) @map(name: "created_at")
+  updatedAt DateTime @updatedAt @map(name: "updated_at")
+  Post      Post[]
+}
+
+model Media {
+  id           Int      @id @default(autoincrement())
+  link         String?
+  Type         Boolean
+  adminCreator Admin?   @relation(fields: [adminId], references: [id])
+  adminId      Int?
+  createdAt    DateTime @default(now()) @map(name: "created_at")
+  updatedAt    DateTime @updatedAt @map(name: "updated_at")
+}
+
+model PostComment {
+  id        Int      @id @default(autoincrement())
+  content   String?
+  member    Member?  @relation(fields: [memberId], references: [id])
+  memberId  Int?
+  post      Post?    @relation(fields: [postId], references: [id])
+  postId    Int?
+  createdAt DateTime @default(now()) @map(name: "created_at")
+  updatedAt DateTime @updatedAt @map(name: "updated_at")
+}
+
+model Tier {
+  id        Int      @id @default(autoincrement())
+  benefits  String?
+  price     Int
+  createdAt DateTime @default(now()) @map(name: "created_at")
+  updatedAt DateTime @updatedAt @map(name: "updated_at")
+  Member    Member[]
+}
+
+enum Role {
+  MEMBER
+  ADMIN
 }
