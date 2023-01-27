@@ -1,9 +1,14 @@
 <script setup lang="ts">
+
+
 import HelloWorld from './components/HelloWorld.vue'
 import TheWelcome from './components/TheWelcome.vue'
 import WelcomePageVue from './components/WelcomePage.vue';
 import Books from './components/Books.vue';
 import NotFound from './components/NotFound.vue'
+
+import Navbar from './components/Navbar.vue';
+
 
 </script>
 
@@ -14,11 +19,13 @@ import NotFound from './components/NotFound.vue'
     
     <img alt="Vue logo" class="logo" src="./assets/logo.svg" width="125" height="125" />
 <div class="wrapper">
+
       <HelloWorld msg="You did it!" />
     </div>
   </header>
 
   <main>
+    <Navbar></Navbar>
     
     <WelcomePageVue />
   </main>
@@ -52,3 +59,19 @@ header {
   }
 }
 </style>
+
+<script lang="ts"> 
+export default {
+  computed: {
+    username() {
+      // We will see what `params` is shortly
+      return this.$route.params.username
+    }
+  },
+  methods: {
+    goBack() {
+      window.history.length > 1 ? this.$router.go(-1) : this.$router.push('/')
+    }
+  }
+}
+</script>

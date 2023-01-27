@@ -2,13 +2,22 @@ import { createApp } from 'vue'
 import App from './App.vue'
 import WelcomePageVue from './components/WelcomePage.vue';
 import Books from './components/Books.vue';
+import HelloWorld from './components/HelloWorld.vue'
+import Register from './components/Register.vue'
 import './assets/main.css'
 import {createRouter, createWebHashHistory } from 'vue-router'
+import Login from './components/Login.vue'
+import Podcast from './components/PodcastPage.vue'
+import About from './components/About.vue'
 
 
 const routes = [
   { path: '/', component: WelcomePageVue },
-  { path: '/books', component: Books },
+  { path: '/books', name: "Books", component: Books },
+  { path: '/login', name: "Login", component: Login}, 
+  { path: '/register', name: "Register", component: Register },
+  { path: '/podcast', name: "Podcast", component: Podcast },
+  { path: '/about', name: "About", component: About },
 ]
 
 
