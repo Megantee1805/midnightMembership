@@ -1,7 +1,7 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 import styled from 'styled-components';
-import Message from './Message';
+import Message from '../Message/Message';
 
 const Wrapper = styled.div`
   display: flex;
