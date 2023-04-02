@@ -1,98 +1,89 @@
-import React, { useState } from "react";
-import './Form.css';
-// import { GoogleLogin } from "react-google-login";
-// import FacebookLogin from "react-facebook-login";
+import React from 'react';
+import styled from 'styled-components';
 
-const Signup = () => {
-  const [formData, setFormData] = useState({
-    username: "",
-    email: "",
-    password: "",
-    confirmPassword: "",
-  });
+const Container = styled.div`
+  display: flex;
+  height: 100vh;
+`;
 
-  const { username, email, password, confirmPassword } = formData;
+const LeftSection = styled.div`
+  background-color: #f0f0f0;
+  width: 50%;
+`;
 
-  const onChange = (e) =>
-    setFormData({ ...formData, [e.target.name]: e.target.value });
+const RightSection = styled.div`
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  width: 50%;
+`;
 
-  const onSubmit = (e) => {
-    e.preventDefault();
-    // Add sign up logic here
-  };
+const Form = styled.form`
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding: 32px;
+  border: 1px solid #ccc;
+  border-radius: 8px;
+`;
 
-  const responseGoogle = (response) => {
-    console.log(response);
-    // Add Google authentication logic here
-  };
+const Input = styled.input`
+  margin-bottom: 16px;
+  padding: 8px;
+  border: 1px solid #ccc;
+  border-radius: 4px;
+  font-size: 16px;
+  width: 100%;
+`;
 
-  const responseFacebook = (response) => {
-    console.log(response);
-    // Add Facebook authentication logic here
-  };
+const Button = styled.button`
+  background-color: #007bff;
+  color: #fff;
+  border: none;
+  border-radius: 4px;
+  padding: 12px 24px;
+  font-size: 16px;
+  cursor: pointer;
 
-  return (
-    <div>
-      <h2>Sign Up</h2>
-      <form className="form" onSubmit={(e) => onSubmit(e)}>
-        <label htmlFor="username">Username:</label><br />
-        <input
-          type="text"
-          id="username"
-          name="username"
-          value={username}
-          onChange={(e) => onChange(e)}
-        /><br />
+  &:hover {
+    background-color: #0062cc;
+  }
+`;
 
-        <label htmlFor="email">Email:</label><br />
-        <input
-          type="email"
-          id="email"
-          name="email"
-          value={email}
-          onChange={(e) => onChange(e)}
-        /><br />
+const Heading = styled.h1`
+  font-size: 64px;
+  font-weight: bold;
+  color: #00000;
+  margin-bottom: 24px;
+`;
 
-        <label htmlFor="password">Password:</label><br />
-        <input
-          type="password"
-          id="password"
-          name="password"
-          value={password}
-          onChange={(e) => onChange(e)}
-        /><br />
+const SubHeading = styled.h2`
+  font-size: 32px;
+  font-weight: bold;
+  color: #00000;
+  margin-bottom: 24px;
+`;
 
-        <label htmlFor="confirmPassword">Confirm Password:</label><br />
-        <input
-          type="password"
-          id="confirmPassword"
-          name="confirmPassword"
-          value={confirmPassword}
-          onChange={(e) => onChange(e)}
-        /><br />
 
-        <input type="submit" value="Sign Up" />
-      </form>
+function LandingPage() {
+    return (
+        <Container>
+            <LeftSection>
+                <Heading>Welcome to our Membership Site</Heading>
+                <SubHeading>Join us now and get access to exclusive content!</SubHeading>
+            </LeftSection>
+            <RightSection>
+                <Form>
+                    <h2>Sign up</h2>
+                    <Input type="text" placeholder="Name" />
+                    <Input type="email" placeholder="Email" />
+                    <Input type="password" placeholder="Password" />
+                    <Button>Sign up</Button>
+                </Form>
+            </RightSection>
+        </Container>
+    );
+}
 
-      <hr />
-
-      <p>Or sign up with:</p>
-
-      {/* <GoogleLogin
-        clientId="your-google-client-id"
-        buttonText="Google"
-        onSuccess={responseGoogle}
-        onFailure={responseGoogle}
-        cookiePolicy={"single_host_origin"}
-      />
-
-      <FacebookLogin
-        appId="your-facebook-app-id"
-        autoLoad={false}
-        fields="name,email,picture"
-        callback={responseFacebook}
-      /> */}
-    </div>
-  )}
-
-  export default Signup
+export default LandingPage;

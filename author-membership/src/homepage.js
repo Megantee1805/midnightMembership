@@ -1,33 +1,97 @@
 import React from 'react';
 import './Homepage.css';
 import { Link } from 'react-router-dom';
+import styled from 'styled-components';
+
+const Container = styled.div`
+  display: flex;
+  height: 100vh;
+`;
+
+const LandingPage = styled.div`
+  flex: 1;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background-color: #f5f5f5;
+`;
+
+const SignupLogin = styled.div`
+  flex: 1;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+`;
+
+const FormContainer = styled.div`
+  max-width: 400px;
+  width: 100%;
+  padding: 32px;
+  background-color: #fff;
+  border-radius: 8px;
+  box-shadow: 0px 2px 8px rgba(0, 0, 0, 0.1);
+`;
+
+const Title = styled.h2`
+  margin-bottom: 16px;
+  text-align: center;
+`;
+
+const Input = styled.input`
+  width: 100%;
+  padding: 8px;
+  margin-bottom: 16px;
+  border: none;
+  border-radius: 4px;
+  box-shadow: 0px 2px 8px rgba(0, 0, 0, 0.1);
+`;
+
+const Button = styled.button`
+  width: 100%;
+  padding: 8px;
+  margin-top: 16px;
+  border: none;
+  border-radius: 4px;
+  background-color: #0066ff;
+  color: #fff;
+  font-weight: bold;
+  cursor: pointer;
+
+  &:hover {
+    background-color: #0052cc;
+  }
+`;
+
+const LandingPageContent = () => {
+  return (
+    <LandingPage>
+      <h1>Welcome to our website</h1>
+      <br></br>
+      <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Fusce at nibh eget odio fermentum semper. Aliquam pulvinar felis in enim pharetra, sed bibendum dui convallis.</p>
+    </LandingPage>
+  );
+};
+
+const SignupLoginContent = () => {
+  return (
+    <SignupLogin>
+      <FormContainer>
+        <Title>Log in</Title>
+        <Input type="email" placeholder="Email" />
+        <Input type="password" placeholder="Password" />
+        <Button>Log in</Button>
+        <Link to="/signup"> Register</Link>
+      </FormContainer>
+    </SignupLogin>
+  );
+};
 
 const Homepage = () => {
   return (
-    <div className="Homepage">
-      <header className="Homepage-header">
-        <h1>Welcome to Midnight Membership</h1>
-        <p>Get exclusive access to our premium content</p>
-        <Link to="/signup">Sign up now</Link>
-      </header>
-      <main className="Homepage-main">
-        <h2>What is Midnight Membership?</h2>
-        <p>
-          Midnight Membership is a premium membership site that provides
-          exclusive access to our curated collection of content, including
-          articles, videos, and podcasts.
-        </p>
-        <h2>Why Join?</h2>
-        <ul>
-          <li>Get access to premium content</li>
-          <li>Stay up-to-date with the latest trends and news</li>
-          <li>Connect with like-minded individuals in our community</li>
-        </ul>
-      </main>
-      <footer className="Homepage-footer">
-        <p>&copy; 2023 Midnight Membership</p>
-      </footer>
-    </div>
+    <Container>
+      <LandingPageContent />
+      <SignupLoginContent />
+    </Container>
   );
 };
 
