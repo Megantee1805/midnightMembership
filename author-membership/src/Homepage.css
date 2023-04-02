@@ -1,0 +1,53 @@
+.Homepage {
+    text-align: center;
+  }
+  
+  .Homepage-header {
+    background-color: #282c34;
+    min-height: 20vh;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    font-size: calc(10px + 2vmin);
+    color: white;
+  }
+  
+  .Homepage-header button {
+    margin-top: 2rem;
+    padding: 1rem 2rem;
+    font-size: 1.2rem;
+    background-color: #61dafb;
+    border: none;
+    border-radius: 1rem;
+    cursor: pointer;
+  }
+  
+  .Homepage-main {
+    margin: 2rem;
+  }
+  
+  .Homepage-main h2 {
+    font-size: 2rem;
+  }
+  
+  .Homepage-main ul {
+    list-style: none;
+    margin: 0;
+    padding: 0;
+  }
+  
+  .Homepage-main li {
+    font-size: 1.2rem;
+    margin-bottom: 1rem;
+  }
+  
+  .Homepage-footer {
+    background-color: #282c34;
+    min-height: 5vh;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: white;
+  }
+  
