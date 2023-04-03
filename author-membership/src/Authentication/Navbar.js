@@ -63,7 +63,7 @@ const LoginButton = styled.button`
 const NavbarComponent = () => {
   return (
     <Navbar>
-      <Logo href="/">My Website</Logo>
+      <Logo href="/">Midnight Membership</Logo>
       <NavLinks>
         <NavItem>
           <NavLink href="/">Home</NavLink>

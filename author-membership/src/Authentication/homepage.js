@@ -65,9 +65,13 @@ const Button = styled.button`
 const LandingPageContent = () => {
   return (
     <LandingPage>
-      <h1>Welcome to our website</h1>
+      <div>
+      <h1>Welcome To Midnight World</h1>
       <br></br>
-      <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Fusce at nibh eget odio fermentum semper. Aliquam pulvinar felis in enim pharetra, sed bibendum dui convallis.</p>
+      <p>Step into a world of wonders and imagination</p>
+      <p>Read deeply immersive worlds that are brought to life</p>
+      <p>Participate in their creation</p>
+      </div>
     </LandingPage>
   );
 };
